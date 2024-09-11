@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SectionFive;
 use App\Models\SectionOne;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SectionOneController extends Controller
 {
@@ -12,7 +14,8 @@ class SectionOneController extends Controller
      */
     public function index()
     {
-        //
+        $sectionOnes = SectionOne::orderByDesc('id')->get();
+        return view('admin.galleries.index', compact('sectionOnes'));
     }
 
     /**
@@ -28,7 +31,23 @@ class SectionOneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::transaction(function () use ($request) {
+            $validated = $request->validated();
+
+            $validated = $request->validated();
+
+            if($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'public'); 
+                $validated['image'] = $imagePath; 
+            } else {
+                $imagePath = 'images/image-default.png'; 
+            }
+
+            $gallery = SectionOne::create($validated); 
+
+        });
+
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully added new image.');
     }
 
     /**
