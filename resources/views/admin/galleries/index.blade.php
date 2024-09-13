@@ -53,14 +53,24 @@
             </div>
           </div>
           <div class="col-12 col-lg-1 mb-2">
-            <div class="order-actions">
+            {{-- <div class="order-actions">
               <a
                 type="button"
-                class="text-primary bg-light-primary border-0"
+                class="text-danger bg-light-danger border-0"
                 data-bs-toggle="modal"
                 data-bs-target="#modalAddTitle"
-                ><i class="bx bxs-edit"></i
+                ><i class="bx bxs-plus"></i
               ></a>
+            </div> --}}
+
+            <div class="">
+              <a
+                type="button"
+                class="btn btn-primary radius-8"
+                data-bs-toggle="modal"
+                data-bs-target="#modalEditTitle"
+                ><i class="bx bxs-edit"></i
+              >Edit</a>
             </div>
           </div>
         </div>
@@ -79,14 +89,24 @@
             </div>
             @endforeach
             <div class="col-12 col-lg-1 mb-2">
-                <div class="order-actions">
+                {{-- <div class="order-actions">
                   <a
                     type="button"
-                    class="text-primary bg-light-primary border-0"
+                    class="text-danger bg-light-danger border-0"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalAddSectionTwo"
+                    ><i class="bx bx-plus"></i
+                  ></a>
+                </div> --}}
+
+                <div class="">
+                  <a
+                    type="button"
+                    class="btn btn-primary radius-8"
                     data-bs-toggle="modal"
                     data-bs-target="#modalEditSectionTwo"
                     ><i class="bx bxs-edit"></i
-                  ></a>
+                  >Edit</a>
                 </div>
               </div>
         </div>
@@ -96,25 +116,35 @@
         <div class="row mb-lg-3">
             @foreach ($sectionThrees as $sectionThree)
                 
-            <div class="col-12 col-lg-5 mb-3">
-              <img
-                src="{{ Storage::url($sectionThree->image) }}"
-                alt="jas hujan indonesia"
-                class="img-fluid radius-10 transform-effect"
-              />
+            <div class="col-12 col-lg-6 mb-3">
+                
+                <div class="">
+                  <a
+                    type="button"
+                    class="btn btn-primary radius-8 mb-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalEditSectionThree{{ $sectionThree->id }}"
+                    ><i class="bx bxs-edit"></i
+                  >Edit</a>
+                </div>
+                <img
+                  src="{{ Storage::url($sectionThree->image) }}"
+                  alt="jas hujan indonesia"
+                  class="img-fluid radius-10 transform-effect"
+                />
             </div>
             @endforeach
-            <div class="col-12 col-lg-1 mb-2">
+            {{-- <div class="col-12 col-lg-1 mb-2">
                 <div class="order-actions">
                   <a
                     type="button"
-                    class="text-primary bg-light-primary border-0"
+                    class="text-danger bg-light-danger border-0"
                     data-bs-toggle="modal"
                     data-bs-target="#modalAddSectionThree"
-                    ><i class="bx bxs-edit"></i
+                    ><i class="bx bx-plus"></i
                   ></a>
                 </div>
-            </div>
+            </div> --}}
           </div>
 
           <hr>
@@ -122,7 +152,16 @@
           <div class="row mb-lg-3">
             @foreach ($sectionFours as $sectionFour)
                 
-            <div class="col-12 col-lg-5 mb-3">
+            <div class="col-12 col-lg-6 mb-3">
+              <div class="">
+                <a
+                  type="button"
+                  class="btn btn-primary radius-8 mb-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditSectionFour{{ $sectionFour->id }}"
+                  ><i class="bx bxs-edit"></i
+                >Edit</a>
+              </div>
               <img
                 src="{{ Storage::url($sectionFour->image) }}"
                 alt="jas hujan indonesia"
@@ -130,17 +169,17 @@
               />
             </div>
             @endforeach
-            <div class="col-12 col-lg-1 mb-2">
+            {{-- <div class="col-12 col-lg-1 mb-2">
                 <div class="order-actions">
                   <a
                     type="button"
-                    class="text-primary bg-light-primary border-0"
+                    class="text-danger bg-light-danger border-0"
                     data-bs-toggle="modal"
                     data-bs-target="#modalAddSectionFour"
-                    ><i class="bx bxs-edit"></i
+                    ><i class="bx bx-plus"></i
                   ></a>
                 </div>
-            </div>
+            </div> --}}
           </div>
 
           <hr>
@@ -156,7 +195,14 @@
             </div>
           </div>
           <div class="col-12 col-lg-1 mb-2">
-            <div class="order-actions">
+            <a
+            type="button"
+            class="btn btn-primary radius-8 mb-2"
+            data-bs-toggle="modal"
+            data-bs-target="#modalEditTagline"
+            ><i class="bx bxs-edit"></i
+          >Edit</a>
+            {{-- <div class="order-actions">
               <a
                 type="button"
                 class="text-primary bg-light-primary border-0"
@@ -164,25 +210,34 @@
                 data-bs-target="#modalAddTagline"
                 ><i class="bx bxs-edit"></i
               ></a>
-            </div>
+            </div> --}}
           </div>
         </div>
 
         <hr />
 
         <div class="row">
-            <div class="order-actions">
+            {{-- <div class="order-actions">
                 <a
                   type="button"
-                  class="text-primary bg-light-primary border-0"
+                  class="text-danger bg-light-danger border-0"
                   data-bs-toggle="modal"
                   data-bs-target="#modalAddGalleries"
-                  ><i class="bx bxs-edit"></i
+                  ><i class="bx bx-plus"></i
                 ></a>
-              </div>
+              </div> --}}
             @foreach ($galleries as $gallery)
                 
             <div class="col-12 col-lg-3 mb-3">
+              <div class="">
+                <a
+                  type="button"
+                  class="btn btn-primary radius-8 mb-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditGalleries{{ $gallery->id }}"
+                  ><i class="bx bxs-edit"></i
+                >Edit</a>
+              </div>
               <img
                 src="{{ Storage::url($gallery->image) }}"
                 alt="jas hujan indonesia"
@@ -202,18 +257,25 @@
         </div>
 
         <div class="row">
-            <div class="order-actions">
+            {{-- <div class="order-actions">
                 <a
                   type="button"
-                  class="text-primary bg-light-primary border-0"
+                  class="text-danger bg-light-danger border-0"
                   data-bs-toggle="modal"
                   data-bs-target="#modalAddAdvantage"
-                  ><i class="bx bxs-edit"></i
+                  ><i class="bx bx-plus"></i
                 ></a>
-            </div>
+            </div> --}}
             @foreach ($advantages as $advantage)
             <div class="col-12 col-lg-3 mb-3 d-flex">
               <div class="box-custom radius-30 w-100 transform-effect">
+                <a
+                  type="button"
+                  class="btn btn-primary radius-10 mb-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditAdvantage{{ $advantage->id }}"
+                  ><i class="bx bxs-edit"></i
+                >Edit</a>
                 <div
                   class="box-custom-body font-18 text-black"
                   style="padding: 24px"
@@ -234,16 +296,23 @@
 
         <div class="row">
             @foreach ($sectionFives as $sectionFive)
-                <div class="col-12 col-lg-11">
+                <div class="col-12 col-lg-12">
                     <img
                         src="{{ Storage::url($sectionFive->image) }}"
                         alt="jas hujan indonesia"
                         class="transform-effect"
                         style="width: 300px; border-radius: 100%"
                     />
+                    <a
+                      type="button"
+                      class="btn btn-primary radius-10 mb-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalEditSectionFive{{ $sectionFive->id }}"
+                      ><i class="bx bxs-edit"></i
+                    >Edit</a>
                 </div>
             @endforeach
-            
+
         </div>
         <div
           class="p-3 radius-30 mb-3 transform-effect"
@@ -288,15 +357,15 @@
         >
       </div>
 
-      <!-- Modal Box Edit -->
+{{-- ---------------------------------- --}}
       <div
         class="modal fade"
-        id="modalEditSectionTwo"
+        id="modalAddSectionTwo"
         tabindex="-1"
         aria-labelledby="modalEditLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="modalEditLabel">Title</h5>
@@ -331,6 +400,53 @@
         </div>
       </div>
 
+
+      @foreach ($sectionTwos as $sectionTwo)
+        
+      <div
+      class="modal fade"
+      id="modalEditSectionTwo"
+      tabindex="-1"
+      aria-labelledby="modalEditLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalEditLabel{{ $sectionTwo->id }}">Image</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <form method="POST" action="{{ route('admin.sectionTwos.update', $sectionTwo->id) }}" enctype="multipart/form-data">
+                  @csrf
+                  @method('PUT')
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="title" class="form-label">Nama</label>
+                          <input type="text" class="form-control" id="title" value="{{ $sectionTwo->name }}" name="name">
+                      </div>
+                      <div class="mb-3">
+                          <label for="formFile" class="form-label">Image</label>
+                          <input class="form-control" type="file" id="formFile" name="image">
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary radius-6"
+                          data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary radius-6">Save</button>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      @endforeach
+
       {{-- ----------------- --}}
       <div
       class="modal fade"
@@ -339,7 +455,7 @@
       aria-labelledby="modalEditLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalEditLabel">Title</h5>
@@ -373,6 +489,51 @@
         </div>
       </div>
     </div>
+
+    @foreach ($sectionThrees as $sectionThree)
+    <div
+    class="modal fade"
+    id="modalEditSectionThree{{ $sectionThree->id }}"
+    tabindex="-1"
+    aria-labelledby="modalEditLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditLabel{{ $sectionThree->id }}">Title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{ route('admin.sectionThrees.update', $sectionThree->id) }}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="title" value="{{ $sectionThree->name }}" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="formFile" name="image">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary radius-6"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary radius-6">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    @endforeach
     {{-- ---------------------- --}}
 
           {{-- ----------------- --}}
@@ -383,7 +544,7 @@
           aria-labelledby="modalEditLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="modalEditLabel">Title</h5>
@@ -417,6 +578,51 @@
             </div>
           </div>
         </div>
+
+        @foreach ($sectionFours as $sectionFour)
+        <div
+        class="modal fade"
+        id="modalEditSectionFour{{ $sectionFour->id }}"
+        tabindex="-1"
+        aria-labelledby="modalEditLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalEditLabel">Title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('admin.sectionFours.update', $sectionFour->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="title" placeholder="Title..." name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image</label>
+                            <input class="form-control" type="file" id="formFile" name="image">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary radius-6"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary radius-6">Save</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+        @endforeach
         {{-- ---------------------- --}}
 
         {{-- ------------------------------ --}}
@@ -428,7 +634,7 @@
          aria-labelledby="modalEditLabel"
          aria-hidden="true"
        >
-         <div class="modal-dialog">
+         <div class="modal-dialog modal-lg modal-dialog-centered">
            <div class="modal-content">
              <div class="modal-header">
                <h5 class="modal-title" id="modalEditLabel">Tagline</h5>
@@ -458,6 +664,47 @@
            </div>
          </div>
        </div>
+
+      @foreach ($taglines as $tagline)
+        <div
+            class="modal fade"
+            id="modalEditTagline"
+            tabindex="-1"
+            aria-labelledby="modalEditLabel"
+            aria-hidden="true"
+            >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalEditLabel{{ $tagline->id }}">Tagline</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <form method="POST" action="{{ route('admin.taglines.update', $tagline->id) }}" enctype="multipart/form-data">
+                <div class="modal-body">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Description</label>
+                                <textarea rows="3" type="text" class="form-control" id="title" name="description">{{ $tagline->description }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary radius-6"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary radius-6">Save</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+      @endforeach
        {{-- ------------------------- --}}
 
         <div
@@ -467,7 +714,7 @@
             aria-labelledby="modalEditLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="modalEditLabel">Title</h5>
@@ -497,6 +744,49 @@
               </div>
             </div>
           </div>
+
+          @foreach ($titleWebsites as $title)
+            
+          <div
+          class="modal fade"
+          id="modalEditTitle"
+          tabindex="-1"
+          aria-labelledby="modalEditLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalEditLabel{{ $title->id }}">Title</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <form method="POST" action="{{ route('admin.titleWebsites.update', $title->id) }}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+              <div class="modal-body">
+                      @csrf
+                      <div class="modal-body">
+                          <div class="mb-3">
+                              <label for="title" class="form-label">Nama</label>
+                              <input type="text" class="form-control" id="title" value="{{ $title->name }}" name="name">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary radius-6"
+                          data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary radius-6">Save</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+          @endforeach
           {{-- ------------------------------ --}}
         {{-- ----------------- --}}
         <div
@@ -506,7 +796,7 @@
         aria-labelledby="modalEditLabel"
         aria-hidden="true"
         >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalEditLabel">Gallery</h5>
@@ -540,6 +830,52 @@
             </div>
         </div>
         </div>
+
+
+        @foreach ($galleries as $gallery)
+             <div
+                class="modal fade"
+                id="modalEditGalleries{{ $gallery->id }}"
+                tabindex="-1"
+                aria-labelledby="modalEditLabel"
+                aria-hidden="true"
+                >
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditLabel">Gallery</h5>
+                        <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ route('admin.galleries.update', $gallery->id) }}" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="title" value="{{ $gallery->name }}" name="name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Image</label>
+                                    <input class="form-control" type="file" id="formFile" name="image">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary radius-6"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary radius-6">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+              </div>
+        @endforeach
         {{-- ---------------------- --}}
 
                {{-- ------------------------- --}}
@@ -551,7 +887,7 @@
                aria-labelledby="modalEditLabel"
                aria-hidden="true"
              >
-               <div class="modal-dialog">
+               <div class="modal-dialog modal-lg modal-dialog-centered">
                  <div class="modal-content">
                    <div class="modal-header">
                      <h5 class="modal-title" id="modalEditLabel">Advantage</h5>
@@ -585,50 +921,140 @@
                  </div>
                </div>
              </div>
+
+             @foreach ($advantages as $advantage)
+              <div
+                class="modal fade"
+                id="modalEditAdvantage{{ $advantage->id }}"
+                tabindex="-1"
+                aria-labelledby="modalEditLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalEditLabel">Advantage</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <form method="POST" action="{{ route('admin.advantages.update', $advantage->id) }}" enctype="multipart/form-data">
+                    <div class="modal-body">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" value="{{ $advantage->title }}" name="title">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="description" class="form-label">Description</label>
+                                  <textarea type="text" class="form-control" id="description" name="description">{{ $advantage->description }}</textarea>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary radius-6"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary radius-6">Save</button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+             @endforeach
              {{-- ------------------------------ --}}
 
               {{-- ----------------- --}}
         <div
-        class="modal fade"
-        id="modalAddSectionFive"
-        tabindex="-1"
-        aria-labelledby="modalEditLabel"
-        aria-hidden="true"
-        >
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalEditLabel">Gallery</h5>
-                <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('admin.sectionFives.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="title" placeholder="Title..." name="name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image</label>
-                            <input class="form-control" type="file" id="formFile" name="image">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary radius-6"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary radius-6">Save</button>
-                    </div>
-                </form>
-            </div>
-            </div>
+          class="modal fade"
+          id="modalAddSectionFive"
+          tabindex="-1"
+          aria-labelledby="modalEditLabel"
+          aria-hidden="true"
+          >
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="modalEditLabel">Image</h5>
+                  <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  ></button>
+              </div>
+              <div class="modal-body">
+                  <form method="POST" action="{{ route('admin.sectionFives.store') }}" enctype="multipart/form-data">
+                      @csrf
+                      <div class="modal-body">
+                          <div class="mb-3">
+                              <label for="title" class="form-label">Nama</label>
+                              <input type="text" class="form-control" id="title" placeholder="Title..." name="name">
+                          </div>
+                          <div class="mb-3">
+                              <label for="formFile" class="form-label">Image</label>
+                              <input class="form-control" type="file" id="formFile" name="image">
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary radius-6"
+                              data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary radius-6">Save</button>
+                      </div>
+                  </form>
+              </div>
+              </div>
+          </div>
         </div>
-        </div>
+
+        @foreach ($sectionFives as $sectionFive)
+          <div
+            class="modal fade"
+            id="modalEditSectionFive{{ $sectionFive->id }}"
+            tabindex="-1"
+            aria-labelledby="modalEditLabel"
+            aria-hidden="true"
+            >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditLabel{{ $sectionFive->id }}">Image</h5>
+                    <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('admin.sectionFives.update', $sectionFive->id) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="title"  name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Image</label>
+                                <input class="form-control" type="file" id="formFile" name="image">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary radius-6"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary radius-6">Save</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+          </div>
+        @endforeach
         {{-- ---------------------- --}}
 
     

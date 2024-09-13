@@ -61,9 +61,22 @@ class TaglineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tagline $tagline)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'description' => 'required|string',
+        ]);
+
+        // Find the tagline by ID
+        $tagline = Tagline::findOrFail($id);
+
+        // Update the data
+        $tagline->update([
+            'description' => $request->description,
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully updated the title.');
     }
 
     /**

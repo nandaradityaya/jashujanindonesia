@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionTwoRequest;
+use App\Http\Requests\UpdateSectionTwoRequest;
 use App\Models\SectionTwo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class SectionTwoController extends Controller
 {
@@ -69,9 +71,25 @@ class SectionTwoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SectionTwo $sectionTwo)
+    public function update(UpdateSectionTwoRequest $request, SectionTwo $sectionTwo)
     {
-        //
+        DB::transaction(function () use ($request, $sectionTwo){
+
+            
+            $validated = $request->validated();
+
+            if($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'public'); 
+                $validated['image'] = $imagePath; 
+            } else {
+                $imagePath = 'images/image-default.png'; 
+            }
+
+
+            $sectionTwo->update($validated); 
+        });
+
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully edit image.');
     }
 
     /**

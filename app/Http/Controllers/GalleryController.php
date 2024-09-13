@@ -80,7 +80,15 @@ class GalleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UpdateGalleryRequest $request, Gallery $gallery)
+    public function edit(Request $request, Gallery $gallery)
+    {
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateGalleryRequest $request, Gallery $gallery)
     {
         DB::transaction(function () use ($request, $gallery){
 
@@ -95,21 +103,10 @@ class GalleryController extends Controller
             }
 
 
-
-            $validated['slug'] = Str::slug($validated['title']);
-
             $gallery->update($validated); 
         });
 
         return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully edit image.');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Gallery $gallery)
-    {
-        //
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionThreeRequest;
+use App\Http\Requests\UpdateSectionThreeRequest;
 use App\Models\SectionThree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -69,9 +70,25 @@ class SectionThreeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SectionThree $sectionThree)
+    public function update(UpdateSectionThreeRequest $request, SectionThree $sectionThree)
     {
-        //
+        DB::transaction(function () use ($request, $sectionThree){
+
+            
+            $validated = $request->validated();
+
+            if($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'public'); 
+                $validated['image'] = $imagePath; 
+            } else {
+                $imagePath = 'images/image-default.png'; 
+            }
+
+
+            $sectionThree->update($validated); 
+        });
+
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully edit image.');
     }
 
     /**

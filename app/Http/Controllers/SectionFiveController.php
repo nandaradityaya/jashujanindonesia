@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionFourRequest;
+use App\Http\Requests\UpdateSectionFiveRequest;
 use App\Models\SectionFive;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -69,9 +70,25 @@ class SectionFiveController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SectionFive $sectionFive)
+    public function update(UpdateSectionFiveRequest $request, SectionFive $sectionFive)
     {
-        //
+        DB::transaction(function () use ($request, $sectionFive){
+
+            
+            $validated = $request->validated();
+
+            if($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'public'); 
+                $validated['image'] = $imagePath; 
+            } else {
+                $imagePath = 'images/image-default.png'; 
+            }
+
+
+            $sectionFive->update($validated); 
+        });
+
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully edit image.');
     }
 
     /**

@@ -62,10 +62,24 @@ class TitleWebsiteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TitleWebsite $titleWebsite)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        // Find the TitleWebsite by ID
+        $titleWebsite = TitleWebsite::findOrFail($id);
+
+        // Update the data
+        $titleWebsite->update([
+            'name' => $request->name,
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully updated the title.');
     }
+
 
     /**
      * Remove the specified resource from storage.

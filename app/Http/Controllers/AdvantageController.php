@@ -64,9 +64,24 @@ class AdvantageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Advantage $advantage)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        // Find the advantage by ID
+        $advantage = Advantage::findOrFail($id);
+
+        // Update the data
+        $advantage->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully updated the title.');
     }
 
     /**

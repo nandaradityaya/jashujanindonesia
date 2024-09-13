@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionFourRequest;
+use App\Http\Requests\UpdateSectionFourRequest;
 use App\Models\SectionFour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -69,9 +70,25 @@ class SectionFourController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SectionFour $sectionFour)
+    public function update(UpdateSectionFourRequest $request, SectionFour $sectionFour)
     {
-        //
+        DB::transaction(function () use ($request, $sectionFour){
+
+            
+            $validated = $request->validated();
+
+            if($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'public'); 
+                $validated['image'] = $imagePath; 
+            } else {
+                $imagePath = 'images/image-default.png'; 
+            }
+
+
+            $sectionFour->update($validated); 
+        });
+
+        return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully edit image.');
     }
 
     /**
