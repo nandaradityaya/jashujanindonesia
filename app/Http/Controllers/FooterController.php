@@ -2,38 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGalleryRequest;
-use App\Http\Requests\UpdateGalleryRequest;
-use App\Models\Gallery;
-use App\Models\TitleWebsite;
+use App\Http\Requests\StoreFooterRequest;
+use App\Http\Requests\UpdateFooterRequest;
+use App\Models\Footer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use App\Models\Advantage;
-use App\Models\Footer;
-use App\Models\SectionFive;
-use App\Models\SectionFour;
-use App\Models\SectionThree;
-use App\Models\SectionTwo;
-use App\Models\Tagline;
 
-class GalleryController extends Controller
+class FooterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $galleries = Gallery::orderBy('id')->get();
-        $taglines = Tagline::orderBy('id')->get();
-        $titleWebsites = TitleWebsite::orderBy('id')->get();
-        $advantages = Advantage::orderBy('id')->get();
-        $sectionTwos = SectionTwo::orderBy('id')->get();
-        $sectionThrees = SectionThree::orderBy('id')->get();
-        $sectionFours = SectionFour::orderBy('id')->get();
-        $sectionFives = SectionFive::orderBy('id')->get();
-        $footers = Footer::orderBy('id')->get();
-        return view('admin.galleries.index', compact(['galleries', 'titleWebsites', 'advantages', 'taglines', 'sectionTwos', 'sectionThrees', 'sectionFours', 'sectionFives', 'footers']));
+        $footers = Footer::orderByDesc('id')->get();
+        return view('admin.galleries.index', compact('footers'));
     }
 
     /**
@@ -47,7 +30,7 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGalleryRequest $request)
+    public function store(StoreFooterRequest $request)
     {
         DB::transaction(function () use ($request) {
             $validated = $request->validated();
@@ -64,7 +47,7 @@ class GalleryController extends Controller
 
         
 
-            $gallery = Gallery::create($validated); 
+            $footer = Footer::create($validated); 
 
         });
 
@@ -74,7 +57,7 @@ class GalleryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Gallery $gallery)
+    public function show(Footer $footer)
     {
         //
     }
@@ -82,17 +65,17 @@ class GalleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Gallery $gallery)
+    public function edit(Footer $footer)
     {
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGalleryRequest $request, Gallery $gallery)
+    public function update(UpdateFooterRequest $request, Footer $footer)
     {
-        DB::transaction(function () use ($request, $gallery){
+        DB::transaction(function () use ($request, $footer){
 
             
             $validated = $request->validated();
@@ -105,7 +88,7 @@ class GalleryController extends Controller
             }
 
 
-            $gallery->update($validated); 
+            $footer->update($validated); 
         });
 
         return redirect()->route('admin.galleries.index')->with('success', 'Congrats! You successfully edit image.');
@@ -114,7 +97,7 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gallery $gallery)
+    public function destroy(Footer $footer)
     {
         //
     }

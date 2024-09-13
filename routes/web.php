@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdvantageController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('sectionThrees', SectionThreeController::class);
         Route::resource('sectionFours', SectionFourController::class);
         Route::resource('sectionFives', SectionFiveController::class);
+        Route::resource('footers', FooterController::class);
     });
 });
 

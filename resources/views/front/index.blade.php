@@ -134,14 +134,27 @@
             @endforeach
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
           @foreach ($sectionFives as $sectionFive)
-              <div class="col-12 col-lg-11">
+              <div class="col-12 col-lg-12">
                   <img
                       src="{{ Storage::url($sectionFive->image) }}"
                       alt="jas hujan indonesia"
                       class="transform-effect"
                       style="width: 300px; border-radius: 100%"
+                  />
+              </div>
+          @endforeach
+        </div> --}}
+
+        <div class="row mb-3">
+          @foreach ($footers as $footer)
+              <div class="col-12 col-lg-12">
+                  <img
+                      src="{{ Storage::url($footer->image) }}"
+                      alt="jas hujan indonesia"
+                      class="transform-effect img-fluid radius-10"
+                      {{-- style="width: 300px; border-radius: 100%" --}}
                   />
               </div>
           @endforeach

@@ -292,8 +292,45 @@
 
         <hr />
 
-        
+        <div class="row mb-lg-3">
+          @foreach ($footers as $footer)
+              
+          <div class="col-12 col-lg-12 mb-3">
+              
+              <div class="">
+                <a
+                  type="button"
+                  class="btn btn-primary radius-8 mb-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditfooter{{ $footer->id }}"
+                  ><i class="bx bxs-edit"></i
+                >Edit</a>
+              </div>
+              <img
+                src="{{ Storage::url($footer->image) }}"
+                alt="jas hujan indonesia"
+                class="img-fluid transform-effect radius-10"
+                {{-- style="width: 300px; border-radius: 100%" --}}
+              />
+          </div>
+          @endforeach
+          {{-- <div class="col-12 col-lg-1 mb-2">
+              <div class="order-actions">
+                <a
+                  type="button"
+                  class="text-danger bg-light-danger border-0"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalAddFooter"
+                  ><i class="bx bx-plus"></i
+                >Add New</a>
+              </div>
+          </div> --}}
+        </div>
 
+        <hr>
+
+        
+{{-- 
         <div class="row">
             @foreach ($sectionFives as $sectionFive)
                 <div class="col-12 col-lg-12">
@@ -313,7 +350,7 @@
                 </div>
             @endforeach
 
-        </div>
+        </div> --}}
         <div
           class="p-3 radius-30 mb-3 transform-effect"
           style="background-color: rgb(0, 195, 255)"
@@ -706,6 +743,96 @@
         </div>
       @endforeach
        {{-- ------------------------- --}}
+
+             {{-- ----------------- --}}
+      <div
+      class="modal fade"
+      id="modalAddFooter"
+      tabindex="-1"
+      aria-labelledby="modalEditLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalEditLabel">Image</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <form method="POST" action="{{ route('admin.footers.store') }}" enctype="multipart/form-data">
+                  @csrf
+                  <div class="modal-body">
+                      <div class="mb-3">
+                          <label for="title" class="form-label">Nama</label>
+                          <input type="text" class="form-control" id="title" placeholder="Title..." name="name">
+                      </div>
+                      <div class="mb-3">
+                          <label for="formFile" class="form-label">Image</label>
+                          <input class="form-control" type="file" id="formFile" name="image">
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary radius-6"
+                          data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary radius-6">Save</button>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @foreach ($footers as $footer)
+    <div
+    class="modal fade"
+    id="modalEditfooter{{ $footer->id }}"
+    tabindex="-1"
+    aria-labelledby="modalEditLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditLabel{{ $footer->id }}">Title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{ route('admin.footers.update', $footer->id) }}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="title" value="{{ $footer->name }}" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="formFile" name="image">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary radius-6"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary radius-6">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    @endforeach
+    {{-- ---------------------- --}}
+
 
         <div
             class="modal fade"

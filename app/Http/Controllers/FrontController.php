@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advantage;
+use App\Models\Footer;
 use App\Models\Gallery;
 use App\Models\SectionFive;
 use App\Models\SectionFour;
@@ -23,6 +24,7 @@ class FrontController extends Controller
         $sectionFours = SectionFour::orderBy('id')->get();
         $sectionFives = SectionFive::orderBy('id')->get();
         $taglines = Tagline::orderBy('id')->get();
-        return view ('front.index', compact(['galleries', 'titleWebsites', 'advantages', 'taglines', 'sectionTwos', 'sectionThrees', 'sectionFours', 'sectionFives',]));
+        $footers = Footer::orderBy('id')->get();
+        return view ('front.index', compact(['galleries', 'titleWebsites', 'advantages', 'taglines', 'sectionTwos', 'sectionThrees', 'sectionFours', 'sectionFives', 'footers']));
     }
 }
